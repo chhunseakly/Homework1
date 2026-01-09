@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Neon Light Switch</title>
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: radial-gradient(circle at top, #111 0%, #000 70%);
+        font-family: Arial, sans-serif;
+        color: white;
+    }
+
+    .card {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 20px;
+        padding: 30px 40px;
+        text-align: center;
+        box-shadow: 0 0 40px rgba(0, 255, 255, 0.15);
+        backdrop-filter: blur(10px);
+    }
+
+    h2 {
+        margin-bottom: 20px;
+        letter-spacing: 1px;
+    }
+
+    img {
+        width: 120px;
+        transition: all 0.4s ease;
+        filter: drop-shadow(0 0 0px cyan);
+    }
+
+    img.on {
+        filter: drop-shadow(0 0 25px cyan);
+        transform: scale(1.05);
+    }
+
+    .status {
+        margin: 15px 0;
+        font-size: 14px;
+        opacity: 0.8;
+    }
+
+    button {
+        margin-top: 15px;
+        padding: 12px 30px;
+        font-size: 16px;
+        border: none;
+        border-radius: 25px;
+        cursor: pointer;
+        background: linear-gradient(135deg, #00f2ff, #00c2ff);
+        color: black;
+        box-shadow: 0 0 15px rgba(0, 255, 255, 0.6);
+        transition: all 0.3s ease;
+    }
+
+    button:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 25px rgba(0, 255, 255, 1);
+    }
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <h2>Smart Light</h2>
+
+    <img id="light"
+         src="https://www.w3schools.com/js/pic_bulboff.gif"
+         alt="Light">
+
+    <div class="status" id="status">Light is OFF</div>
+
+    <button onclick="toggleLight()">On / Off</button>
+</div>
+
+<script>
+    let isOn = false;
+
+    function toggleLight() {
+        const light = document.getElementById("light");
+        const status = document.getElementById("status");
+
+        if (isOn) {
+            light.src = "https://www.w3schools.com/js/pic_bulboff.gif";
+            light.classList.remove("on");
+            status.textContent = "Light is OFF";
+        } else {
+            light.src = "https://www.w3schools.com/js/pic_bulbon.gif";
+            light.classList.add("on");
+            status.textContent = "Light is ON";
+        }
+
+        isOn = !isOn;
+    }
+</script>
+
+</body>
+</html>
